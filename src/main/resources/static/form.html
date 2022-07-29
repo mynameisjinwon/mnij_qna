@@ -35,25 +35,27 @@
 		</div>
 	</nav>
 	<div class="container">
-	<h1>회원 가입</h1>
-	<form>
-		<div class="mb-3">
-			<label for="userid" class="form-label">ID
-				</label> <input type="email" class="form-control"
-				id="userid" aria-describedby="emailHelp">
-		</div>
-		<div class="mb-3">
-			<label for="password" class="form-label">비밀번호</label>
-			<input type="password" class="form-control"
-				id="password">
-		</div>
-		<div class="mb-3">
-			<label for="name" class="form-label">이름</label>
-			<input type="text" class="form-control"
-				id="name">
-		</div>
-		<button type="submit" class="btn btn-primary">Submit</button>
-	</form>
+		<h1>회원 가입</h1>
+		<form action="/create" method="post">
+			<div class="mb-3">
+				<label for="userid" class="form-label">ID </label> <input
+					type="text" class="form-control" name="userId"
+					aria-describedby="emailHelp">
+			</div>
+			<div class="mb-3">
+				<label for="password" class="form-label">비밀번호</label> <input
+					type="password" class="form-control" name="password">
+			</div>
+			<div class="mb-3">
+				<label for="name" class="form-label">이름</label> <input type="text"
+					class="form-control" name="name">
+			</div>
+			<div class="mb-3">
+				<label for="email" class="form-label">이메일</label> <input type="email"
+					class="form-control" name="email">
+			</div>
+			<button type="submit" class="btn btn-primary">Submit</button>
+		</form>
 	</div>
 
 	<!-- Optional JavaScript; choose one of the two! -->
