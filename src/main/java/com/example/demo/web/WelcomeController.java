@@ -14,4 +14,9 @@ public class WelcomeController {
 		model.addAttribute("age", age);
 		return "helloworld"; // 접근할 파일이름을 지정한다.
 	}
+	
+	@GetMapping("/hi")
+	public String newIndex() {
+		return "index";
+	}
 }
