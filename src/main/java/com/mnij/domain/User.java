@@ -1,4 +1,4 @@
-package com.example.demo.web;
+package com.mnij.domain;
 
 public class User {
 	private String userId;
