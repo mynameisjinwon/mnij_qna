@@ -13,8 +13,13 @@ public class User {
 	
 	@Column(nullable=false, length = 20)
 	private String userId;
+	
+	@Column(nullable=false, length = 20)
 	private String password;
+	
+	@Column(nullable=false, length = 20)
 	private String name;
+	
 	private String email;
 
 	public void setUserId(String userId) {
@@ -41,6 +46,12 @@ public class User {
 	}
 	public String getEmail() {
 		return email;
+	}
+	public void update(User updateUser) {
+		this.userId = updateUser.userId;
+		this.password = updateUser.password;
+		this.name = updateUser.name;
+		this.email = updateUser.email;
 	}
 	@Override
 	public String toString() {
