@@ -22,7 +22,7 @@ public class UserController {
 	//회원가입 화면
 	@GetMapping("/form")
 	public String form() {
-		return "/user/form";
+		return "user/form";
 	}
 	
 	//수정할 회원정보 출력
@@ -30,7 +30,7 @@ public class UserController {
 	public String updateForm(@PathVariable Long id, Model model) {
 		User user = userRepository.findById(id).get();
 		model.addAttribute("user", user);
-		return "/user/updateForm";
+		return "user/updateForm";
 	}
 	
 	//회원정보 수정
@@ -48,7 +48,7 @@ public class UserController {
 	@GetMapping("") 
 	public String userList(Model model) {
 		model.addAttribute("users", userRepository.findAll());
-		return "/user/list";
+		return "user/list";
 	}
 		
 	//users 로 post 요청이 들어오면 - user 객체 생성 회원가입
@@ -61,7 +61,7 @@ public class UserController {
 	//로그인 화면
 	@GetMapping("/login")
 	public String login() {
-		return "/user/login";
+		return "user/login";
 	}
 	
 	//로그인
@@ -84,7 +84,7 @@ public class UserController {
 				return "helloworld";
 			}
 		}
-		return "/user/login_failed";
+		return "user/login_failed";
 	}
 	
 }
