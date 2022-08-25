@@ -13,7 +13,7 @@ import com.mnij.domain.User;
 import com.mnij.domain.UserRepository;
 
 @Controller
-@RequestMapping("/users")
+@RequestMapping("users")
 public class UserController {
 
 	@Autowired
