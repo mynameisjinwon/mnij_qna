@@ -1,5 +1,7 @@
 package com.mnij.web;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -66,25 +68,24 @@ public class UserController {
 	
 	//로그인
 	@PostMapping("/login")
-	public String login(User user, Model model) {
-		String id = user.getUserId();
-		String password = user.getPassword();
-		System.out.println("****************************");
-		System.out.println(id + " " + password);
-		System.out.println("****************************");
-		for(User u : userRepository.findAll()) {
-			String uId = u.getUserId();
-			String uPwd = u.getPassword();
-			
-			//DB 데이터와 일치하면
-			if(uId.equals(id) && uPwd.equals(password)) {
-				
-				System.out.println(userRepository.findByUserId(uId));
-				model.addAttribute("user", userRepository.findByUserId(uId));
-				return "helloworld";
-			}
+	public String login(String userId, String password, HttpSession session) {
+		User user = userRepository.findByUserId(userId);
+		// DB에 없는 userId가 입력되면 다시 로그인 실패 화면으로 보낸다.
+		if(user == null) {
+			System.out.println("login Failure!");
+			return "user/login_failed";
 		}
-		return "user/login_failed";
+		// 패스워드가 일치하지 않으면
+		if(!password.equals(user.getPassword())) {
+			System.out.println("login Failure!");
+			return "user/login_failed";
+		}
+		//모든 정보가 일치하면 세션에 추가
+		//키 : user 값 : userId 와 일치하는 user
+		System.out.println("login Success!");
+		session.setAttribute("user",  user);
+		
+		return "redirect:/";
 	}
 	
 }
